@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        Title="" Height="570" Width="890">
+        Title="Информация с датчиков" Height="570" Width="890" WindowTitleBrush="{DynamicResource BlueBrush}">
     <Grid>
-        <Grid x:Name="AuthGrid" Visibility="Collapsed">
-            <TextBox x:Name="loginBox"
+        <Grid Name="AuthGrid" Visibility="Collapsed">
+            <TextBox Name="loginBox"
                 VerticalAlignment="Top"
                 Margin="320,174,320,0"
                 Width="242"
@@ -21,7 +21,7 @@
                 Controls:TextBoxHelper.Watermark="Логин"
                 Style="{StaticResource LoginTextBox}">
             </TextBox>
-            <PasswordBox x:Name="passwordBox"
+            <PasswordBox Name="passwordBox"
                  VerticalAlignment="Top"
                 Margin="320,224,320,0"
                 Width="242"
@@ -31,7 +31,7 @@
                 Controls:TextBoxHelper.UseFloatingWatermark="True"
                 Controls:TextBoxHelper.Watermark="Пароль"
                 Style="{StaticResource MetroButtonRevealedPasswordBox}" />
-            <TextBox x:Name="hostBox"
+            <TextBox Name="hostBox"
                 VerticalAlignment="Top"
                 Margin="320,274,320,0"
                 Width="242"
@@ -45,13 +45,132 @@
             <Button Content="ВХОД" Height="35" Margin="320,322,320,0" Width="242" VerticalAlignment="Top" Click="Auth_Click"/>
         </Grid>
         <Grid Name="MainGrid">
-            <TabControl x:Name="tabControl" Height="539" VerticalAlignment="Top" Margin="0,0,-5,0" Controls:TabControlHelper.IsUnderlined="True" HorizontalAlignment="Left" Width="887" Controls:TabControlHelper.Underlined="SelectedTabItem">
-                <TabItem x:Name="sensors_data_tab" Header="Данные с датчиков">
-                    <Grid Margin="0,0,0,0" VerticalAlignment="Top">
-                        <DataGrid BorderThickness="2" BorderBrush="{DynamicResource BlueBrush}" x:Name="sensors_data_grid" Height="420" VerticalAlignment="Top" Margin="10,10,10,0" Width="860" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="All"/>
-                        <Button Content="Обновить" HorizontalAlignment="Left" Height="50" Margin="120,435,0,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Update" Background="{DynamicResource AccentColorBrush}"/>
-                        <Button Content="Изменить" HorizontalAlignment="Center" Height="50" Margin="0,435,0,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Edit_Column" Background="{DynamicResource AccentColorBrush}"/>
-                        <Button Content="Удалить" HorizontalAlignment="Right" Height="50" Margin="0,435,120,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Delete_Column" Background="{DynamicResource AccentColorBrush}"/>
+            <TabControl Name="tabControl" Height="539" VerticalAlignment="Top" Margin="0,0,-5,0" Controls:TabControlHelper.IsUnderlined="True" HorizontalAlignment="Left" Width="887" Controls:TabControlHelper.Underlined="SelectedTabItem">
+                <TabItem Header="Данные с датчиков">
+                    <Grid>
+                        <DataGrid BorderThickness="1" BorderBrush="White" Name="sensors_data_grid" Height="390" VerticalAlignment="Top" Margin="10,10,10,0" Width="860" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="All"/>
+                        <Button Content="Обновить" HorizontalAlignment="Left" Height="50" Margin="110,420,0,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Update" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
+                        <Button Content="Изменить" HorizontalAlignment="Center" Height="50" Margin="0,420,0,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Edit_Column" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
+                        <Button Content="Удалить" HorizontalAlignment="Right" Height="50" Margin="0,420,110,0" VerticalAlignment="Top" Width="209" FontSize="20" Click="Table_Delete_Column" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Добавить запись">
+                    <Grid>
+                        <ComboBox x:Name="paintName"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,50,0,0"
+                            Width="210"
+                            Height="40"
+                            SelectedIndex="0" SelectionChanged="paintName_SelectionChanged">
+                            <ComboBoxItem>Добавить запись</ComboBoxItem>
+                            <ComboBoxItem>Изменить запись</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Name="NumberOfSensor"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="50,120,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Номер датчика"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="NameOfSensor"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,120,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Наименование датчика"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="TypeOfSensor"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Margin="0,120,50,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Тип датчика"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="Value_A"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="50,200,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Значение А"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="Value_B"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,200,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Значение B"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="Value_C"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Margin="0,200,50,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Значение C"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="Value_D"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="50,280,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Значение D"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <TextBox Name="Zero_value"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,280,0,0"
+                        Width="242"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Нулевое значение"
+                        Style="{StaticResource LoginTextBox}">
+                        </TextBox>
+                        <DatePicker x:Name="Expiration_date"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,280,50,0"
+                            Width="242"
+                            Height="40"
+                            Controls:TextBoxHelper.UseFloatingWatermark="True"
+                            Controls:TextBoxHelper.Watermark="Окончание сркоа годности" PreviewTextInput="PreviewTextInputDigit" SelectedDateFormat="Short" />
+                        <Button Name="AddOrChange" Content="Добавить" HorizontalAlignment="Center" Height="45" Margin="0,400,0,0" VerticalAlignment="Top" Width="200" FontSize="18" Click="Add_Or_Change_Column" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
                     </Grid>
                 </TabItem>
             </TabControl>

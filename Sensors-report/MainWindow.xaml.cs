@@ -67,11 +67,103 @@ namespace Sensors_report
             MessageBoxResult result = MessageBox.Show("Вы действительно хотите выполнить запрос?\n" + SQLQuery,
                 "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
-            if(result == MessageBoxResult.OK)
+            if (result == MessageBoxResult.OK)
             {
                 MySqlLib.MySqlData.MySqlExecute.SqlNoneQuery(SQLQuery, connectStr);
                 SensorsGridUpdate();
             }
+        }
+
+        private void Add_Or_Change_Column(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Content.ToString() == "Добавить")
+            {
+                AddData();
+            }
+            else
+            {
+                EditData();
+            }
+        }
+
+        private void AddData()
+        {
+            bool areAllBoxesFilled = true;
+            TextBox[] textBoxes = {NumberOfSensor, NameOfSensor, TypeOfSensor,
+                                  Value_A, Value_B, Value_C, Value_D,
+                                  Zero_value };
+
+            if (Expiration_date.Text != null && Expiration_date.Text != "")
+            {
+                foreach (TextBox box in textBoxes)
+                {
+                    if (box.Text == null || box.Text == "")
+                    {
+                        areAllBoxesFilled = false;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                areAllBoxesFilled = false;
+            }
+
+            if (areAllBoxesFilled)
+            {
+                string SQLQuery = "INSERT INTO sensors_data VALUES(";
+                foreach (TextBox box in textBoxes)
+                {
+                    SQLQuery += "'" + box.Text + "', ";
+                }
+                SQLQuery += "'" + CSharpDateToSQLDate(Expiration_date.Text) + "')";
+
+                MySqlLib.MySqlData.MySqlExecute.MyResult result =
+                    MySqlLib.MySqlData.MySqlExecute.SqlNoneQuery(SQLQuery, connectStr);
+
+                if (result.HasError == false)
+                {
+                    SensorsGridUpdate();
+                }
+                else
+                {
+                    MessageBox.Show(result.ErrorText);
+                }
+
+            }
+        }
+
+        public string CSharpDateToSQLDate(string CSharpDate) // CSharDate look like dd.mm.yyyy
+        {
+            return CSharpDate.Substring(6) + "-" + 
+                CSharpDate.Substring(3, 2) + "-" +
+                CSharpDate.Substring(0, 2);
+        }
+
+
+
+
+        private void EditData()
+        {
+
+        }
+
+        private void paintName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AddOrChange != null)
+            {
+                switch (((ComboBox)sender).SelectedIndex)
+                {
+                    case 0: AddOrChange.Content = "Добавить"; break; // Add
+                    case 1: AddOrChange.Content = "Изменить"; break; // Edit
+                }
+            }
+
+        }
+
+        private void PreviewTextInputDigit(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Char.IsDigit(e.Text, 0)) e.Handled = true; // Check if the input char is digit
         }
     }
 }
