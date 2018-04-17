@@ -19,7 +19,6 @@ namespace Sensors_report
         SensorsNumbers window;
         public MainWindow()
         {
-            connectStr = @"Database = sensors_info; Data Source = localhost; User Id = root; Password =";
             InitializeComponent();
         }
 
@@ -27,6 +26,8 @@ namespace Sensors_report
         {
             connectStr = @"Database = sensors_info; Data Source = " + hostBox.Text + ";" +
                 "User Id = " + loginBox.Text + "; Password = " + passwordBox.Password;
+            AuthGrid.Visibility = Visibility.Collapsed;
+            MainGrid.Visibility = Visibility.Visible;
             SensorsGridUpdate();
         }
 

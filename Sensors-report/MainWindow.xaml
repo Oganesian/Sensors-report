@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Title="Информация с датчиков" Height="570" Width="890" WindowTitleBrush="{DynamicResource BlueBrush}">
     <Grid>
-        <Grid Name="AuthGrid" Visibility="Collapsed">
+        <Grid Name="AuthGrid" Visibility="Visible">
             <TextBox Name="loginBox"
                 VerticalAlignment="Top"
                 Margin="320,174,320,0"
@@ -42,9 +42,9 @@
                 Controls:TextBoxHelper.Watermark="Host"
                 Style="{StaticResource LoginTextBox}">
             </TextBox>
-            <Button Content="ВХОД" Height="35" Margin="320,322,320,0" Width="242" VerticalAlignment="Top" Click="Auth_Click"/>
+            <Button Content="ВХОД" Height="35" Margin="320,322,320,0" Width="242" VerticalAlignment="Top" Click="Auth_Click" Foreground="White" Background="#FF2D2D30"/>
         </Grid>
-        <Grid Name="MainGrid">
+        <Grid Name="MainGrid" Visibility="Hidden">
             <TabControl Name="tabControl" Height="539" VerticalAlignment="Top" Margin="0,0,-5,0" Controls:TabControlHelper.IsUnderlined="True" HorizontalAlignment="Left" Width="887" Controls:TabControlHelper.Underlined="SelectedTabItem">
                 <TabItem Header="Данные с датчиков">
                     <Grid>

@@ -25,3 +25,4 @@ C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Release\Sensors-re
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Release\Sensors-report.csproj.CoreCompileInputs.cache
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Release\Sensors-report.exe
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Release\Sensors-report.pdb
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Release\Sensors-report.csprojResolveAssemblyReference.cache
