@@ -248,7 +248,7 @@ namespace Sensors_report
 
                     // Head
                     Paragraph paragraph = body.AppendChild(new Paragraph());
-                    Paragraph empty = body.AppendChild(new Paragraph());
+                    body.AppendChild(new Paragraph()); // new line
                     ParagraphProperties paragraphPr = new ParagraphProperties();
                     paragraphPr.Justification = new Justification() { Val = JustificationValues.Center };
                     paragraph.Append(paragraphPr);
@@ -265,7 +265,7 @@ namespace Sensors_report
                     run.Append(runPr);
                     run.AppendChild(new Text("Задание на обработку"));
                     
-                    // Table
+                    // Table_1
                     Table table_1 = new Table();
                     var Value = new EnumValue<BorderValues>(BorderValues.Birds);
 
@@ -276,7 +276,8 @@ namespace Sensors_report
                             new RightBorder() { Val = Value, Size = 2 },
                             new InsideHorizontalBorder() { Val = Value, Size = 2 },
                             new InsideVerticalBorder() { Val = Value, Size = 2 }),
-                        new TableWidth() { Width = "10000" }
+                        new TableWidth() { Width = "10000" },
+                        new Justification() { Val = JustificationValues.Center}
                     );
                     Value = null;
 
@@ -310,10 +311,54 @@ namespace Sensors_report
                     table_1.Append(tableRows[0]);
                     table_1.Append(tableRows[1]);
 
+                    body.Append(table_1);
+                    body.AppendChild(new Paragraph()); // new line
+
+                    // Table_2
                     Table table_2 = new Table();
                     table_2.Append((TableProperties)tablePr.Clone());
+                    int.TryParse(NumberOfSensors.Text, out int numberOfSensors);
 
-                    body.Append(table_1);
+                    TableRow[] tableRows_2 = new TableRow[numberOfSensors + 1]; // +1 for headers
+                    TableCell[,] tableCells_2 = new TableCell[numberOfSensors, 5]; // 5 cells per a row
+                    Paragraph[,] paragraphs_2 = new Paragraph[numberOfSensors, 5];
+                    Run[,] runs_2 = new Run[numberOfSensors, 5];
+
+                    string[] headers = { "№", "Номер датчика", "Тип датчика", "Срок годности", "F0" };
+
+                    tableRows_2[0] = new TableRow();
+                    for(int i = 0; i < headers.Length; i++) // Headers
+                    {
+                        TableCell cell = new TableCell();
+                        Paragraph par = new Paragraph();
+                        Run runHeader = new Run();
+                        Text header = new Text(headers[i]);
+                        runHeader.Append(header);
+                        par.Append(runHeader);
+                        cell.Append(par);
+                        tableRows_2[0].Append(cell);
+                    }
+                    table_2.Append(tableRows_2[0]);
+
+                    for (int i = 0; i < numberOfSensors; i++)
+                    {
+                        tableRows_2[i+1] = new TableRow();
+                        for (int k = 0; k < 5; k++)
+                        {
+                            runs_2[i, k] = new Run();
+                            paragraphs_2[i, k] = new Paragraph();
+                            tableCells_2[i, k] = new TableCell();
+
+                            runs_2[i, k].Append(new Text("eee"));
+                            paragraphs_2[i, k].Append(runs_2[i, k]);
+                            tableCells_2[i, k].Append(paragraphs_2[i, k]);
+
+                            tableRows_2[i+1].Append(tableCells_2[i, k]);
+                        }
+
+                        table_2.Append(tableRows_2[i+1]);
+                    }
+                    body.Append(table_2);
 
                     mainPart.Document.Save();
                     wordDocument.Close();
@@ -326,3 +371,4 @@ namespace Sensors_report
         }
     }
 }
+ 
