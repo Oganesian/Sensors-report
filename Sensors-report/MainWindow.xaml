@@ -62,7 +62,7 @@
                             Margin="0,50,0,0"
                             Width="210"
                             Height="40"
-                            SelectedIndex="0" SelectionChanged="paintName_SelectionChanged">
+                            SelectedIndex="0" SelectionChanged="AddOrChangeComboBox_SelectionChanged">
                             <ComboBoxItem>Добавить запись</ComboBoxItem>
                             <ComboBoxItem>Изменить запись</ComboBoxItem>
                         </ComboBox>
@@ -189,7 +189,7 @@
                         <TextBox Name="Department"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
-                        Margin="150,80,0,0"
+                        Margin="150,64,0,0"
                         Width="242"
                         Height="40"
                         Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
@@ -200,7 +200,7 @@
                         <TextBox Name="Stand"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        Margin="0,80,150,0"
+                        Margin="0,64,150,0"
                         Width="242"
                         Height="40"
                         Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
@@ -211,7 +211,7 @@
                         <TextBox Name="TestNumber"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
-                        Margin="150,170,0,0"
+                        Margin="150,154,0,0"
                         Width="242"
                         Height="40"
                         Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
@@ -222,7 +222,7 @@
                         <TextBox Name="Unit"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        Margin="0,170,150,0"
+                        Margin="0,154,150,0"
                         Width="242"
                         Height="40"
                         Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
@@ -230,18 +230,18 @@
                         Controls:TextBoxHelper.UseFloatingWatermark="True"
                         Controls:TextBoxHelper.Watermark="Агрегат"
                         Style="{StaticResource LoginTextBox}"/>
-                        <DatePicker x:Name="Date"
+                        <DatePicker x:Name="DateP"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Margin="150,260,50,0"
+                            Margin="150,244,0,0"
                             Width="242"
                             Height="40"
                             Controls:TextBoxHelper.UseFloatingWatermark="True"
-                            Controls:TextBoxHelper.Watermark="Дата" PreviewTextInput="PreviewTextInputDigit" SelectedDateFormat="Short" Grid.Column="1" />
+                            Controls:TextBoxHelper.Watermark="Дата" PreviewTextInput="PreviewTextInputDigit" SelectedDateFormat="Short" />
                         <TextBox Name="NumberOfSensors"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        Margin="0,260,150,0"
+                        Margin="0,244,150,0"
                         Width="242"
                         Height="40"
                         Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
@@ -250,7 +250,18 @@
                         Controls:TextBoxHelper.Watermark="Количество датчиков"
                         PreviewTextInput="PreviewTextInputDigit"
                         Style="{StaticResource LoginTextBox}"/>
-                        <Button Name="Next" Content="Далее" HorizontalAlignment="Center" Height="45" Margin="334,370,347,0" VerticalAlignment="Top" Width="200" FontSize="18" Click="Next_Click" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
+                        <TextBox Name="FolderPath"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Margin="0,324,151,0"
+                        Width="580"
+                        Height="40"
+                        Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                        Controls:TextBoxHelper.IsWaitingForData="True"
+                        Controls:TextBoxHelper.UseFloatingWatermark="True"
+                        Controls:TextBoxHelper.Watermark="Путь к папке, в которой необходимо сохранить отчет"
+                        Style="{StaticResource LoginTextBox}"/>
+                        <Button Name="Next" Content="Далее" HorizontalAlignment="Center" Height="45" Margin="334,400,347,0" VerticalAlignment="Top" Width="200" FontSize="18" Click="Next_Click" Background="{DynamicResource AccentColorBrush}" Foreground="{DynamicResource SearchTextForeground}"/>
                     </Grid>
                 </TabItem>
             </TabControl>
