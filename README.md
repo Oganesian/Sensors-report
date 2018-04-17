@@ -7,7 +7,7 @@ The program allows you to:
 * add new
 * change
 * delete 
-...data in the database
+<br />...data in the database
 
 
 ## Database — «sensors_info»
