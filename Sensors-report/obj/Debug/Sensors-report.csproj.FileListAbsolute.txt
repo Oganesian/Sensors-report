@@ -21,3 +21,8 @@ c:\users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\Sensors-repo
 c:\users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\Sensors-report.exe
 c:\users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\Sensors-report.pdb
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\Sensors-report.csprojResolveAssemblyReference.cache
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\Sensors-report.csproj.ResolveComReference.cache
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\SensorsNumbers.baml
+C:\Users\bezim\source\repos\Sensors-report\Sensors-report\obj\Debug\SensorsNumbers.g.cs
