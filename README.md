@@ -3,10 +3,12 @@
 A program for generating reports based on data read from sensors. 
 The data is stored in the database. 
 The program allows you to:
-* add
-* change
-* delete new data in the database
 * create reports based on data in the form of Word documents
+* add new
+* change
+* delete 
+...data in the database
+
 
 ## Database — «sensors_info»
 ### Table — «sensors_data»
