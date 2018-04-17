@@ -25,3 +25,10 @@ expiration_date	— DATE
 * [MahApps.Metro](https://github.com/MahApps/MahApps.Metro) — UI toolkit for WPF
 * [MySQL.Data](https://dev.mysql.com/downloads/connector/net/6.10.html) — MySQL/NET Connector
 * [OpenXML SDK 2.5](https://msdn.microsoft.com/en-us/library/office/bb448854.aspx) — The strongly-typed classes for use with Open XML documents.
+
+## Example
+![screenshot](screenshots/example_value.jpg)
+![screenshot](screenshots/program_example.jpg)
+![screenshot](screenshots/second_window_example.jpg)
+![screenshot](screenshots/file_example.jpg)
+![screenshot](screenshots/file_inside_example.jpg)
