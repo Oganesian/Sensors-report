@@ -1,11 +1,6 @@
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\Sensors-report.exe.config
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\Sensors-report.exe
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\Sensors-report.pdb
-C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\DocumentFormat.OpenXml.dll
-C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\MahApps.Metro.dll
-C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\MySql.Data.dll
-C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\MySqlLib.dll
-C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\System.Windows.Interactivity.dll
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\DocumentFormat.OpenXml.xml
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\MahApps.Metro.pdb
 C:\Users\bezim\source\repos\Sensors-report\Sensors-report\bin\Release\MahApps.Metro.xml
